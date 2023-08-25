@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:tt9_betweener_challenge/views_features/follow/follow_list_views.dart';
 import 'package:tt9_betweener_challenge/views_features/onbording/onbording_view.dart';
 import 'package:tt9_betweener_challenge/views_features/search/search_view.dart';
 
@@ -50,12 +51,14 @@ class MyApp extends StatelessWidget {
               RegisterView.id: (context) => const RegisterView(),
               HomeView.id: (context) => const HomeView(),
               MainAppView.id: (context) => const MainAppView(),
-              ProfileView.id: (context) => const ProfileView(),
+              ProfileView.id: (context) => ProfileView(),
               ReceiveView.id: (context) => const ReceiveView(),
-              EditLinkView.id: (context) => EditLinkView(),
+              // EditLinkView.id: (context) => EditLinkView(),
               GoogleMapView.id: (context) => const GoogleMapView(),
               SearchView.id: (context) => const SearchView(),
               OnBordingView.id: (context) => const OnBordingView(),
+              RegisterView.id: (context) => const RegisterView(),
+              // FollowListView.id: (context) => FollowListView(),
             },
           );
         });

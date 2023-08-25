@@ -10,6 +10,7 @@ import 'package:http/http.dart' as http;
 import '../models/user.dart';
 import '../views_features/auth/login_view.dart';
 
+//بيلزمني احط context هان عشان رح يلزمني تحت تعمل navigation
 Future<List<Link>> getLinks(context) async {
   final SharedPreferences prefs = await SharedPreferences.getInstance();
 

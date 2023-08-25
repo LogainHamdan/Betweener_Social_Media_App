@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tt9_betweener_challenge/controllers/auth_controller.dart';
 import 'package:tt9_betweener_challenge/core/utils/assets.dart';
-
+import 'package:tt9_betweener_challenge/controllers/auth_controller.dart';
+import 'package:tt9_betweener_challenge/views_features/home/home_view.dart';
+import '../../models/user.dart';
 import '../widgets/custom_text_form_field.dart';
 import '../widgets/google_button_widget.dart';
 import '../widgets/secondary_button_widget.dart';
@@ -23,6 +27,40 @@ class _RegisterViewState extends State<RegisterView> {
   TextEditingController passwordController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
+
+  void submitRegister() {
+    if (_formKey.currentState!.validate()) {
+      final body = {
+        'name': nameController.text,
+        'email': emailController.text,
+        'password': passwordController.text,
+        'password_confirmation': passwordController.text
+      };
+
+      register(body).then((user) async {
+        print('jgvjh');
+        final SharedPreferences prefs = await SharedPreferences.getInstance();
+        await prefs.setString('user', userToJson(user));
+        print(user.token);
+        if (mounted) {
+          Navigator.pushNamed(context, HomeView.id);
+        }
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text('Registered successfully'),
+          backgroundColor: Color(0xff2D2B4E),
+          behavior: SnackBarBehavior.floating,
+          margin: EdgeInsets.all(12),
+        ));
+      }).catchError((err) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text(err.toString()),
+          backgroundColor: Colors.red,
+          behavior: SnackBarBehavior.floating,
+          margin: EdgeInsets.all(12),
+        ));
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -86,7 +124,7 @@ class _RegisterViewState extends State<RegisterView> {
                   ),
                   SecondaryButtonWidget(
                       onTap: () {
-                        if (_formKey.currentState!.validate()) {}
+                        submitRegister();
                       },
                       text: 'REGISTER'),
                   const SizedBox(

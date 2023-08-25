@@ -53,14 +53,14 @@ class _HomeViewState extends State<HomeView> {
                   onPressed: () {
                     Navigator.pushNamed(context, SearchView.id);
                   },
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.search,
                     size: 40,
                     color: Color(0xff2D2B4E),
                   )),
               IconButton(
                 onPressed: () {},
-                icon: Icon(
+                icon: const Icon(
                   Icons.qr_code,
                   color: Color(0xff2D2B4E),
                   size: 40,

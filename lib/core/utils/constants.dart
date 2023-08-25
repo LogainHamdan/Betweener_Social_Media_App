@@ -8,6 +8,7 @@ const linksUrl = '$baseUrl/links';
 const addLinkUrl = '$baseUrl/links';
 const editLinkUrl = '$baseUrl/links';
 const searchUrl = '$baseUrl/search';
+const followUrl = '$baseUrl/follow';
 
 // const deleteLinkUrl = '$baseUrl/links/';
 const APIKey = 'AIzaSyBHlj6yQiz1s0dZ54Y3XEPI8P5YHt0QXYI';

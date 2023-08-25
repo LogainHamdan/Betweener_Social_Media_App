@@ -7,5 +7,6 @@ Future<User> getLocalUser() async {
   if (prefs.containsKey('user')) {
     return userFromJson(prefs.getString('user')!);
   }
+
   return Future.error('not found');
 }

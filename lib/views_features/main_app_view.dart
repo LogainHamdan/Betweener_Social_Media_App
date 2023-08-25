@@ -20,7 +20,7 @@ class _MainAppViewState extends State<MainAppView> {
   late List<Widget?> screensList = [
     const ReceiveView(),
     const HomeView(),
-    const ProfileView()
+    ProfileView()
   ];
 
   @override
