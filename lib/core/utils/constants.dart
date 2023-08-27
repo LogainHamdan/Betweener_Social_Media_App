@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 
 // endpoints==================
 const baseUrl = 'https://betweener.gsgtt.tech/api';
+
+const updateUrl = '$baseUrl/update';
+
 const loginUrl = '$baseUrl/login';
 const registerUrl = '$baseUrl/register';
 const linksUrl = '$baseUrl/links';

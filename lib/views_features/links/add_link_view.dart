@@ -94,7 +94,6 @@ class _AddLinkViewState extends State<AddLinkView> {
       addNewLink(context, body).then((checkData) {
         print(checkData);
         if (mounted && checkData == true) {
-          Navigator.pop(context);
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
             content: Text('Added successfully'),
             backgroundColor: Colors.green,
@@ -109,6 +108,7 @@ class _AddLinkViewState extends State<AddLinkView> {
           behavior: SnackBarBehavior.floating,
           margin: EdgeInsets.all(12),
         ));
+        Navigator.pop(context);
       });
     }
   }

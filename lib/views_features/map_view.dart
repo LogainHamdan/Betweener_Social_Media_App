@@ -55,29 +55,40 @@ class _GoogleMapViewState extends State<GoogleMapView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: GoogleMap(
-          initialCameraPosition: CameraPosition(
-              target: LatLng(
-                  currentLocation!.latitude!, currentLocation!.longitude!),
-              zoom: 13.5),
-          polylines: {
-            Polyline(
-                polylineId: const PolylineId("route"),
-                points: polylineCoordinates,
-                width: 6)
-          },
-          markers: {
-            Marker(
-                markerId: const MarkerId("currentLocation"),
-                position: LatLng(
-                    currentLocation!.latitude!, currentLocation!.longitude!)),
-            const Marker(
-                markerId: MarkerId("source"),
-                position: GoogleMapView.sourceLocation),
-            const Marker(
-                markerId: MarkerId("destination"),
-                position: GoogleMapView.destination),
-          }),
-    );
+        body: currentLocation != null
+            ? const CircularProgressIndicator()
+            : GoogleMap(
+                initialCameraPosition: CameraPosition(
+                  target: LatLng(
+                    currentLocation!.latitude!,
+                    currentLocation!.longitude!,
+                  ),
+                  zoom: 13.5,
+                ),
+                polylines: {
+                  Polyline(
+                    polylineId: const PolylineId("route"),
+                    points: polylineCoordinates,
+                    width: 6,
+                  ),
+                },
+                markers: {
+                  Marker(
+                    markerId: const MarkerId("currentLocation"),
+                    position: LatLng(
+                      currentLocation!.latitude!,
+                      currentLocation!.longitude!,
+                    ),
+                  ),
+                  const Marker(
+                    markerId: MarkerId("source"),
+                    position: GoogleMapView.sourceLocation,
+                  ),
+                  const Marker(
+                    markerId: MarkerId("destination"),
+                    position: GoogleMapView.destination,
+                  ),
+                },
+              ));
   }
 }

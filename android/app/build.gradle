@@ -24,10 +24,13 @@ if (flutterVersionName == null) {
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
+
 
 android {
     namespace "com.example.betweener_application_final"
-    compileSdkVersion flutter.compileSdkVersion
+    compileSdkVersion 28
     ndkVersion flutter.ndkVersion
 
     compileOptions {

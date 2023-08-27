@@ -7,7 +7,7 @@ class FollowUnfollowButton extends StatelessWidget {
   final void Function()? followFunction;
   final void Function()? unfollowFunction;
 
-  FollowUnfollowButton(
+  const FollowUnfollowButton(
       {Key? key,
       this.followFunction,
       this.unfollowFunction,

@@ -11,11 +11,15 @@ import '../widgets/my-button_widget.dart';
 
 class EditLinkView extends StatefulWidget {
   static const id = "/editLinkView";
-  late String? textTitle;
-  late String? textLink;
-  late String? linkId;
+  late String textTitle;
+  late String textLink;
+  late String linkId;
 
-  EditLinkView({super.key, this.textTitle, this.textLink, this.linkId});
+  EditLinkView(
+      {super.key,
+      required this.textTitle,
+      required this.textLink,
+      required this.linkId});
 
   @override
   State<EditLinkView> createState() => _EditLinkViewState();
@@ -45,7 +49,7 @@ class _EditLinkViewState extends State<EditLinkView> {
     if (_formKey.currentState!.validate()) {
       final body = {'title': titleController.text, 'link': widget.textLink};
 
-      editNewLink(context, body, widget.linkId!).then((updatedLink) {
+      editNewLink(context, body, widget.linkId).then((updatedLink) {
         if (mounted) {
           Navigator.pop(context);
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(

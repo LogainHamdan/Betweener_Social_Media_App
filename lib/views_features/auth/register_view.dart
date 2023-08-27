@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tt9_betweener_challenge/controllers/auth_controller.dart';
+import 'package:tt9_betweener_challenge/controllers/user_controller.dart';
 import 'package:tt9_betweener_challenge/core/utils/assets.dart';
 import 'package:tt9_betweener_challenge/controllers/auth_controller.dart';
 import 'package:tt9_betweener_challenge/views_features/home/home_view.dart';
@@ -9,6 +10,7 @@ import '../../models/user.dart';
 import '../widgets/custom_text_form_field.dart';
 import '../widgets/google_button_widget.dart';
 import '../widgets/secondary_button_widget.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class RegisterView extends StatefulWidget {
   static String id = '/registerView';
@@ -20,6 +22,38 @@ class RegisterView extends StatefulWidget {
 }
 
 class _RegisterViewState extends State<RegisterView> {
+  GoogleSignIn _googleSignIn = GoogleSignIn(
+    scopes: [
+      'email',
+      'https://www.googleapis.com/auth/contacts.readonly',
+    ],
+  );
+
+//   Future<bool> checkAuthorization () async{
+//   final bool isAuthorized = await _googleSignIn.canAccessScopes(scopes);
+//
+//   return isAuthorized;
+//
+//
+// }
+
+// Future<void> _handleAuthorizeScopes() async {
+//   final bool isAuthorized = await _googleSignIn.requestScopes(scopes);
+//   if (isAuthorized) {
+//     // Do things that only authorized users can do!
+//     _handleGetContact(getLocalUser());
+//   }
+// }
+
+  Future<void> _handleSignIn() async {
+    print('fff');
+    try {
+      await _googleSignIn.signIn();
+    } catch (error) {
+      print(error);
+    }
+  }
+
   TextEditingController nameController = TextEditingController();
 
   TextEditingController emailController = TextEditingController();
@@ -140,7 +174,7 @@ class _RegisterViewState extends State<RegisterView> {
                   const SizedBox(
                     height: 12,
                   ),
-                  GoogleButtonWidget(onTap: () {}),
+                  GoogleButtonWidget(onTap: _handleSignIn),
                   const Spacer(),
                 ],
               ),

@@ -19,7 +19,6 @@ class SearchView extends StatefulWidget {
 
 class _SearchViewState extends State<SearchView> {
   late TextEditingController nameController;
-  List<UserClass> users = [];
   late FollowModel followModel;
 
   @override
@@ -38,6 +37,8 @@ class _SearchViewState extends State<SearchView> {
     nameController.dispose();
     super.dispose();
   }
+
+  List<UserClass> users = [];
 
   submitSearch(String name) {
     Map<String, dynamic> body = {'name': name};
@@ -139,7 +140,7 @@ class _SearchViewState extends State<SearchView> {
                                                         content: Text(
                                                             'Followed Successfully'),
                                                         backgroundColor:
-                                                            Colors.black45,
+                                                            Colors.black,
                                                       ));
                                                       getFollow().then((value) {
                                                         followModel = value;

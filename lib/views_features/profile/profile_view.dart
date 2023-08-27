@@ -13,6 +13,7 @@ import 'package:tt9_betweener_challenge/views_features/follow/follow_list_views.
 import '../../core/utils/constants.dart';
 import '../../models/follow.dart';
 import '../../models/user.dart';
+import '../edit_profile_info.dart';
 import '../links/add_link_view.dart';
 import '../links/edit_link_view.dart';
 import '../map_view.dart';
@@ -176,35 +177,49 @@ class _ProfileViewState extends State<ProfileView> {
                 SizedBox(
                   width: 20,
                 ),
-                Column(
-                  children: [
-                    IconButton(
-                      icon: Icon(
-                        Icons.edit,
-                        size: 30,
-                      ),
-                      color: Colors.white,
-                      onPressed: () {
-                        Navigator.pushNamed(context, GoogleMapView.id);
-                      },
-                    ),
-                    SizedBox(
-                      height: 40,
-                    ),
-                    IconButton(
-                      // padding: EdgeInsets.all(15),
-                      icon: Icon(
-                        Icons.location_on_sharp,
-                        color: Colors.red,
-                        size: 40,
-                      ),
-                      color: Colors.white,
-                      onPressed: () {
-                        Navigator.pushNamed(context, GoogleMapView.id);
-                      },
-                    ),
-                  ],
-                )
+                FutureBuilder(
+                    future: user,
+                    builder: (context, snapshot) {
+                      return Column(
+                        children: [
+                          IconButton(
+                            icon: Icon(
+                              Icons.edit,
+                              size: 30,
+                            ),
+                            color: Colors.white,
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => ProfileInfoView(
+                                      name: '${snapshot.data?.user?.name}',
+                                      email: '${snapshot.data?.user?.email}',
+                                    ),
+                                  ));
+                              setState(() {
+                                // snapshot.data?.user?.name =
+                              });
+                            },
+                          ),
+                          SizedBox(
+                            height: 40,
+                          ),
+                          IconButton(
+                            // padding: EdgeInsets.all(15),
+                            icon: Icon(
+                              Icons.location_on_sharp,
+                              color: Colors.red,
+                              size: 40,
+                            ),
+                            color: Colors.white,
+                            onPressed: () {
+                              Navigator.pushNamed(context, GoogleMapView.id);
+                            },
+                          ),
+                        ],
+                      );
+                    })
               ],
             ),
           ),
@@ -242,8 +257,10 @@ class _ProfileViewState extends State<ProfileView> {
                                     builder: (context) => EditLinkView(
                                         linkId:
                                             snapshot.data![index].id.toString(),
-                                        textTitle: snapshot.data![index].title,
-                                        textLink: snapshot.data![index].link),
+                                        textTitle:
+                                            '${snapshot.data![index].title}',
+                                        textLink:
+                                            '${snapshot.data![index].link}'),
                                   ),
                                 ).then((_) {
                                   links = getLinks(context);
