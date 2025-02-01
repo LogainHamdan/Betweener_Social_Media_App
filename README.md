@@ -5,6 +5,7 @@ Betweener is a social media application designed to connect users through a seam
 #### API Host Url: https://betweener.gsgtt.tech/api
 #### UI/UX Link: https://www.figma.com/design/2aFDXqEJroIkjTOzpwde0O/Scan-QR?node-id=0-1&node-type=canvas
 
+![](https://github.com/LogainHamdan/Betweener_Social_Media_App/blob/2b7c60c065731e7d59e82ba67d0744f6a5ba139f/Blue%20Modern%20Mobile%20Application%20Presentation%20(4).jpg)
 ![Alt Text](https://github.com/LogainHamdan/Betweener_Social_Media_App/blob/25edb6e0d5c82f70b79b2bfb5c3b2e01e5d636f4/Screenshot%202024-12-08%20105034.png)
 ![Alt Text](https://github.com/LogainHamdan/Betweener_Social_Media_App/blob/25edb6e0d5c82f70b79b2bfb5c3b2e01e5d636f4/Screenshot%202024-12-08%20105320.png)
 ![Alt Text](https://github.com/LogainHamdan/Betweener_Social_Media_App/blob/25edb6e0d5c82f70b79b2bfb5c3b2e01e5d636f4/Screenshot%202024-12-08%20111658.png)
